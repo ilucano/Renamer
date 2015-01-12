@@ -26,7 +26,6 @@ Public Class frmMain
                 txtFileName.Focus()
         End Select
     End Sub
-
     Private Sub frmMain_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
 
     End Sub

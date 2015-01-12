@@ -22,6 +22,7 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.grpBox = New System.Windows.Forms.GroupBox()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.txtFileName = New System.Windows.Forms.TextBox()
@@ -230,6 +231,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.grpBox)
         Me.Controls.Add(Me.btnStart)
         Me.Controls.Add(Me.grpLocation)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.Name = "frmMain"
         Me.Text = "imagingXperts Renamer"
