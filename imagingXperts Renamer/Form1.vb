@@ -36,7 +36,7 @@ Public Class frmMain
         strWork = New String(Chr(0), 200)
 
         'Pongo el Output
-        rcl = GetPrivateProfileString("General", "startpath", "C:\", strWork, 200, "appinfo.ini")
+        rcl = GetPrivateProfileString("General", "startpath", "C:\", strWork, 200, "c:\appinfo.ini")
         If rcl > 0 Then
             txtPath.Text = strWork.Substring(0, rcl)
         Else
@@ -203,7 +203,8 @@ Public Class frmMain
             Do While objReader.Peek() <> -1
                 _autocomplete.Add(objReader.ReadLine())
             Loop
-
+            objReader.Close()
+            objReader.Dispose()
         End If
     End Sub
 
@@ -222,5 +223,7 @@ Public Class frmMain
         For Each obj In _autocomplete
             objWriter.WriteLine(obj.ToString)
         Next
+        objWriter.Close()
+        objWriter.Dispose()
     End Sub
 End Class
