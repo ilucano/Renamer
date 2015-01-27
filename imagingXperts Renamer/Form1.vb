@@ -6,6 +6,7 @@ Public Class frmMain
     Private _arrFiles() As String
     Private _intCurrent As Integer
     Private _autocomplete As New AutoCompleteStringCollection()
+    Private strExt As String
 
     Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Dim lngRC As Long
@@ -89,7 +90,7 @@ Public Class frmMain
     End Sub
     Private Sub GetAllFiles()
         Dim dirF As New DirectoryInfo(txtPath.Text)
-        Dim filArr As FileInfo() = dirF.GetFiles("*.pdf")
+        Dim filArr As FileInfo() = dirF.GetFiles("*" & strExt)
         Dim fri As FileInfo
         Dim _int As Integer
 
@@ -136,12 +137,12 @@ Public Class frmMain
             End If
 
             ' Si ya hay un archivo Igual le agrego un nro
-            If My.Computer.FileSystem.FileExists(strPath & strNewName & ".pdf") = True Then
+            If My.Computer.FileSystem.FileExists(strPath & strNewName & strExt) = True Then
                 Dim intCnt As Integer = 1
-                Do Until Not (My.Computer.FileSystem.FileExists(strPath & strNewName & " " & intCnt & ".pdf"))
+                Do Until Not (My.Computer.FileSystem.FileExists(strPath & strNewName & " " & intCnt & strExt))
                     intCnt += 1
                 Loop
-                My.Computer.FileSystem.MoveFile(_arrFiles(_intCurrent), strPath & strNewName & " " & intCnt & ".pdf", False)
+                My.Computer.FileSystem.MoveFile(_arrFiles(_intCurrent), strPath & strNewName & " " & intCnt & strExt, False)
             Else
                 My.Computer.FileSystem.MoveFile(_arrFiles(_intCurrent), strPath & strNewName & ".pdf", False)
             End If
@@ -222,5 +223,13 @@ Public Class frmMain
         For Each obj In _autocomplete
             objWriter.WriteLine(obj.ToString)
         Next
+    End Sub
+
+    Private Sub cmbTipo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTipo.SelectedIndexChanged
+        If cmbTipo.SelectedText = "PDF" Then
+            strExt = ".pdf"
+        Else
+            strExt = ".tif"
+        End If
     End Sub
 End Class

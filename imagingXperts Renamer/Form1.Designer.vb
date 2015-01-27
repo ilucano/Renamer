@@ -40,6 +40,7 @@ Partial Class frmMain
         Me.lblStatus = New System.Windows.Forms.Label()
         Me.btnSaveF = New System.Windows.Forms.Button()
         Me.btnLoadF = New System.Windows.Forms.Button()
+        Me.cmbTipo = New System.Windows.Forms.ComboBox()
         Me.grpBox.SuspendLayout()
         Me.grpLocation.SuspendLayout()
         Me.SuspendLayout()
@@ -89,6 +90,7 @@ Partial Class frmMain
         '
         'grpLocation
         '
+        Me.grpLocation.Controls.Add(Me.cmbTipo)
         Me.grpLocation.Controls.Add(Me.rdFolders)
         Me.grpLocation.Controls.Add(Me.rdDocs)
         Me.grpLocation.Controls.Add(Me.chkPutFilename)
@@ -217,6 +219,16 @@ Partial Class frmMain
         Me.btnLoadF.Text = "Load File"
         Me.btnLoadF.UseVisualStyleBackColor = True
         '
+        'cmbTipo
+        '
+        Me.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbTipo.FormattingEnabled = True
+        Me.cmbTipo.Items.AddRange(New Object() {"PDF", "TIF"})
+        Me.cmbTipo.Location = New System.Drawing.Point(168, 100)
+        Me.cmbTipo.Name = "cmbTipo"
+        Me.cmbTipo.Size = New System.Drawing.Size(59, 21)
+        Me.cmbTipo.TabIndex = 7
+        '
         'frmMain
         '
         Me.AcceptButton = Me.btnStart
@@ -260,5 +272,6 @@ Partial Class frmMain
     Friend WithEvents lblStatus As System.Windows.Forms.Label
     Friend WithEvents btnSaveF As System.Windows.Forms.Button
     Friend WithEvents btnLoadF As System.Windows.Forms.Button
+    Friend WithEvents cmbTipo As System.Windows.Forms.ComboBox
 
 End Class
