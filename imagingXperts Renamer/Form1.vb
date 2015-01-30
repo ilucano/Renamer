@@ -229,7 +229,7 @@ Public Class frmMain
     End Sub
 
     Private Sub cmbTipo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTipo.SelectedIndexChanged
-        If cmbTipo.SelectedText = "PDF" Then
+        If cmbTipo.SelectedItem.ToString = "PDF" Then
             strExt = ".pdf"
         Else
             strExt = ".tif"
